@@ -21,8 +21,9 @@ The project was built as a beginner-friendly data engineering portfolio project 
 ---
 
 ## Architecture
-API → Python → Pandas → PostgreSQL
-
+```text
+Public API → Extract (Python Requests) → Transform (Pandas) → Load (PostgreSQL)
+```
 ---
 
 ## Tech Stack
@@ -32,6 +33,15 @@ API → Python → Pandas → PostgreSQL
 - PostgreSQL
 - psycopg2
 - python-dotenv
+
+---
+
+## Key Features
+- Extracts product data from a public API
+- Cleans and transforms data using Pandas
+- Loads data into PostgreSQL
+- Saves raw and processed data locally
+- Prevents duplicate inserts using PostgreSQL conflict handling
 
 ---
 
@@ -98,6 +108,17 @@ The pipeline creates a `products` table in PostgreSQL and loads the cleaned prod
 It also saves:
 - raw API response as JSON
 - cleaned dataset as CSV
+
+---
+## Sample Output
+
+### loaded Products Table
+![database_table](assets/database_table.png)
+
+---
+
+## Deduplication
+The pipeline prevents duplicate inserts by using a primary key on `product_id` and PostgreSQL conflict handling with `ON CONFLICT DO NOTHING`.
 
 ---
 
